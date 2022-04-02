@@ -7,6 +7,11 @@ using UnityEngine;
 
 public class TruckMovement : MonoBehaviour
 {
+    [Header("Other Components needed to communicate with")]
+    //TODO could be refactored into an observer
+    [SerializeField]
+    private LaneManager laneManager;
+    
     [Header("Player Properties")]
     [SerializeField] private float acceleration;
     [SerializeField] private float laneOffset;
@@ -23,7 +28,7 @@ public class TruckMovement : MonoBehaviour
     };
 
     [SerializeField] laneState currentLaneState;
-    
+
     void Start()
     {
         currentLaneState = laneState.lane2;
@@ -40,6 +45,8 @@ public class TruckMovement : MonoBehaviour
     public void PenalizePlayer(float substractedDistance)
     {
         //TODO
+        laneManager.decreaseSpeed(substractedDistance);
+
     }
 
     public void SetSpeed(float modifiedSpeed)

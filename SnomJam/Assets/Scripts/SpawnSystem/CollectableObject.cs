@@ -1,23 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CollectableObject : Obstacles
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private ObstacleData obstacleData;
+    private void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public override float GetSpeedPenalty()
     {
-        
+        return obstacleData.decreaseSpeedValue;
     }
 
-    public override void InteractOnContact()
+    public override void InteractOnContact(GameObject parent)
     {
-        throw new System.NotImplementedException();
+        gameObject.transform.SetParent(parent.transform, true);
     }
 }
