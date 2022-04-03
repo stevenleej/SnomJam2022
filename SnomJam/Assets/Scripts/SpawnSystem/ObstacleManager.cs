@@ -32,11 +32,13 @@ public class ObstacleManager : MonoBehaviour
     
     private void Awake()
     {
-        SpawnObstacles();
+
     }
 
     private void Start()
     {
+        points = PoissonDistributionGenerator.GeneratePoints(radius, regionSize, rejectionSamples);
+        SpawnObstacles();
         RoundOutToLanes();
     }
 
@@ -53,6 +55,8 @@ public class ObstacleManager : MonoBehaviour
         }
     }
 
+  
+    /*
     private void OnDrawGizmos()
     {
         foreach (var p in points)
@@ -60,9 +64,9 @@ public class ObstacleManager : MonoBehaviour
             Gizmos.DrawSphere(p, debugRad);
         }
     }
-
+    */
     void OnValidate() {
-        points = PoissonDistributionGenerator.GeneratePoints(radius, regionSize, rejectionSamples);
+
     }
 
     private void RoundOutToLanes()
