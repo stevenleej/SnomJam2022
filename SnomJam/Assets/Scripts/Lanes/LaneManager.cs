@@ -17,4 +17,9 @@ public class LaneManager : MonoBehaviour
     {
         laneSpeed -= substracteeValue;
     }
+
+    public void StopMoving()
+    {
+        laneSpeed = 0f;
+    }
 }

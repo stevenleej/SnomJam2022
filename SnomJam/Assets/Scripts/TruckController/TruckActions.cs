@@ -6,7 +6,8 @@ using UnityEngine;
 public class TruckActions : MonoBehaviour
 {
     private TruckMovement truckMovement;
-
+    [SerializeField] private GameManager GameManager;
+    [SerializeField] private GameObject laneManager;
     private void Awake()
     {
         truckMovement = GetComponent<TruckMovement>();
@@ -22,6 +23,15 @@ public class TruckActions : MonoBehaviour
             co.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             //reduce truck's speed, although might need refactoring here in the future. Most likely not as useful for a jam.
             truckMovement.PenalizePlayer(co.GetSpeedPenalty());
+        }
+        else if (other.CompareTag("blockade"))
+        {
+            Obstacles co = other.GetComponent<Obstacles>();
+            co.InteractOnContact(gameObject);
+            GameManager.isGameOver = true;
+            laneManager.GetComponent<LaneManager>().StopMoving();
+            //play truck explosion animation here
+            
         }
     }
 }

@@ -15,16 +15,39 @@ public class ObstacleManager : MonoBehaviour
     List<Vector2> points;
 
     [SerializeField] private List<GameObject> prefabsToSpawn;
+    [SerializeField] private List<GameObject> blockadePositions;
     [SerializeField] private List<GameObject> lanes;
 
+    [SerializeField] private GameObject blockadePrefab;
+    [SerializeField] private Transform obstacleLane;
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private LaneManager laneManager;
+
+    [SerializeField] private float offSetForBlockade;
+    [SerializeField] private float timeInterval;
+    [SerializeField] private float timer = 0f;
+    
     private void Awake()
     {
-        spawnObstacles();
+        SpawnObstacles();
     }
 
     private void Start()
     {
         RoundOutToLanes();
+    }
+
+    private void Update()
+    {
+        if (!gameManager.isGameOver)
+        {
+            timer += Time.deltaTime;
+            if (timer > timeInterval)
+            {
+                timer = 0;
+                SpawnBlockades();
+            }
+        }
     }
 
     void OnValidate() {
@@ -50,7 +73,7 @@ public class ObstacleManager : MonoBehaviour
         
     }
 
-    private void spawnObstacles()
+    private void SpawnObstacles()
     {
         if (points != null) {
             foreach (Vector2 point in points)
@@ -62,6 +85,15 @@ public class ObstacleManager : MonoBehaviour
 
             }
         }
+    }
+
+    private void SpawnBlockades()
+    {
+        GameObject spawnedBlockade = Instantiate(blockadePrefab);
+        GameObject player = GameObject.FindWithTag("Player");
+        int randomRange = Random.Range(0, blockadePositions.Count);
+        spawnedBlockade.transform.position = new Vector3(player.transform.position.x + offSetForBlockade, blockadePositions.ElementAt(randomRange).transform.position.y, 1f);
+        spawnedBlockade.transform.SetParent(obstacleLane.transform, true);
     }
     
     

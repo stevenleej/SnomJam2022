@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - collectable
+  - blockade
   layers:
   - Default
   - TransparentFX
