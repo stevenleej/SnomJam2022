@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Gear test
   m_EditorClassIdentifier: 
   name: gear
-  decreaseSpeedValue: 1
+  decreaseSpeedValue: 0.1

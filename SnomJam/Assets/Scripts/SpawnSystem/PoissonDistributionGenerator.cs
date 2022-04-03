@@ -43,7 +43,7 @@ public static class PoissonDistributionGenerator
 	}
 
 	static bool IsValid(Vector2 candidate, Vector2 sampleRegionSize, float cellSize, float radius, List<Vector2> points, int[,] grid) {
-		if (candidate.x >= 5 && candidate.x < sampleRegionSize.x && candidate.y >= 0 && candidate.y < sampleRegionSize.y) {
+		if (candidate.x >= 0 && candidate.x < sampleRegionSize.x && candidate.y >= 0 && candidate.y < sampleRegionSize.y) {
 			int cellX = (int)(candidate.x/cellSize);
 			int cellY = (int)(candidate.y/cellSize);
 			int searchStartX = Mathf.Max(0,cellX -2);
