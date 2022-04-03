@@ -19,7 +19,7 @@ public class TruckActions : MonoBehaviour
             Debug.Log("collided");
             Obstacles co = other.GetComponent<Obstacles>();
             co.InteractOnContact(gameObject);
-            
+            co.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             //reduce truck's speed, although might need refactoring here in the future. Most likely not as useful for a jam.
             truckMovement.PenalizePlayer(co.GetSpeedPenalty());
         }
