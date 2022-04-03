@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
@@ -17,9 +19,17 @@ public class Menu : MonoBehaviour
     bool StartButtonClicked;
     float timer;
 
+    [SerializeField] private GameManager gameManager;
+
+    private void Start()
+    {
+        SpeedometerSlider.value = 8.8f;
+    }
+
     private void Update()
     {
-        SpeedometerText.text = SpeedometerSlider.value.ToString();
+        float convertedValue = SpeedometerSlider.value * 10;
+        SpeedometerText.text = convertedValue.ToString();
         
         if(StartButtonClicked)
         {
@@ -33,13 +43,27 @@ public class Menu : MonoBehaviour
         }
     }
 
+
+    public bool SendGameStarted()
+    {
+        return StartButtonClicked;
+    }
+
     public void OnQuitButton()
     {
-        Application.Quit();
+        if (gameManager.isGameOver)
+        {
+            SceneManager.LoadScene(0);   
+        }
+        else
+        {
+            Application.Quit();
+        }
     }
 
     public void OnStartButton()
     {
         StartButtonClicked = true;
+        gameManager.gameStarted = true;
     }
 }

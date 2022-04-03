@@ -4,22 +4,34 @@ using UnityEngine;
 
 public class LaneManager : MonoBehaviour
 {
+    [SerializeField] private Menu menu;
     [SerializeField] private TruckMovement truckMovement;
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private float laneSpeed;
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.left * laneSpeed * Time.deltaTime);
+        if (gameManager.gameStarted)
+        {
+            transform.Translate(Vector3.left * laneSpeed * Time.deltaTime);   
+        }
+
+        laneSpeed = menu.SpeedometerSlider.value;
     }
 
     public void decreaseSpeed(float substracteeValue)
     {
-        laneSpeed -= substracteeValue;
+        menu.SpeedometerSlider.value -= substracteeValue;
     }
 
     public void StopMoving()
     {
-        laneSpeed = 0f;
+        menu.SpeedometerSlider.value = 0f;
+    }
+
+    public float GetSpeed()
+    {
+        return laneSpeed;
     }
 }

@@ -14,6 +14,8 @@ public class ObstacleManager : MonoBehaviour
 
     List<Vector2> points;
 
+    public float debugRad = 1f;
+
     [SerializeField] private List<GameObject> prefabsToSpawn;
     [SerializeField] private List<GameObject> blockadePositions;
     [SerializeField] private List<GameObject> lanes;
@@ -22,6 +24,7 @@ public class ObstacleManager : MonoBehaviour
     [SerializeField] private Transform obstacleLane;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private LaneManager laneManager;
+    [SerializeField] private Menu menu;
 
     [SerializeField] private float offSetForBlockade;
     [SerializeField] private float timeInterval;
@@ -39,7 +42,7 @@ public class ObstacleManager : MonoBehaviour
 
     private void Update()
     {
-        if (!gameManager.isGameOver)
+        if (!gameManager.isGameOver && gameManager.gameStarted)
         {
             timer += Time.deltaTime;
             if (timer > timeInterval)
@@ -47,6 +50,14 @@ public class ObstacleManager : MonoBehaviour
                 timer = 0;
                 SpawnBlockades();
             }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        foreach (var p in points)
+        {
+            Gizmos.DrawSphere(p, debugRad);
         }
     }
 

@@ -6,10 +6,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public bool isGameOver;
+    public bool gameStarted;
+
+    [SerializeField] private LaneManager laneManager;
 
     private void Awake()
     {
         isGameOver = false;
+        gameStarted = false;
     }
 
     // Start is called before the first frame update
@@ -21,6 +25,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (laneManager.GetSpeed() <= 0)
+        {
+            isGameOver = true;
+        }
         
     }
 }

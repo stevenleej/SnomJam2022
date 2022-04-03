@@ -8,6 +8,7 @@ public class TruckActions : MonoBehaviour
     private TruckMovement truckMovement;
     [SerializeField] private GameManager GameManager;
     [SerializeField] private GameObject laneManager;
+    [SerializeField] private Sprite deadDogs;
     private void Awake()
     {
         truckMovement = GetComponent<TruckMovement>();
@@ -31,7 +32,7 @@ public class TruckActions : MonoBehaviour
             GameManager.isGameOver = true;
             laneManager.GetComponent<LaneManager>().StopMoving();
             //play truck explosion animation here
-            
+            GetComponent<SpriteRenderer>().sprite = deadDogs;
         }
     }
 }
