@@ -1231,7 +1231,7 @@ GameObject:
   m_Component:
   - component: {fileID: 477118642}
   m_Layer: 0
-  m_Name: LerpStart
+  m_Name: TitleLerpStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1425,8 +1425,11 @@ RectTransform:
   m_Children:
   - {fileID: 1776973501}
   - {fileID: 477118642}
+  - {fileID: 1372422914}
+  - {fileID: 920830897}
   - {fileID: 870077887}
   - {fileID: 1783008070}
+  - {fileID: 789704033}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1791,12 +1794,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1483929215}
-  m_Father: {fileID: 1783008070}
-  m_RootOrder: 1
+  m_Father: {fileID: 582646787}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 164.99998, y: -324}
+  m_AnchoredPosition: {x: 81, y: -312}
   m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &789704034
@@ -2006,7 +2009,7 @@ RectTransform:
   - {fileID: 1776834992}
   - {fileID: 1121675125}
   m_Father: {fileID: 582646787}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2063,6 +2066,36 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &920830896
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 920830897}
+  m_Layer: 0
+  m_Name: QuitLerpEnd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &920830897
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920830896}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -484, z: 0}
+  m_LocalScale: {x: 2.4710424, y: 2.4710424, z: 2.4710424}
+  m_Children: []
+  m_Father: {fileID: 582646787}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &965343915
 GameObject:
   m_ObjectHideFlags: 0
@@ -20128,8 +20161,11 @@ MonoBehaviour:
   SpeedometerText: {fileID: 641159691}
   SpeedometerSlider: {fileID: 870077888}
   MenuTitle: {fileID: 1783008069}
-  LerpStart: {fileID: 477118641}
-  LerpEnd: {fileID: 1776973500}
+  QuitButton: {fileID: 789704032}
+  MenuLerpStart: {fileID: 477118641}
+  MenuLerpEnd: {fileID: 1776973500}
+  QuitLerpStart: {fileID: 1372422913}
+  QuitLerpEnd: {fileID: 920830896}
 --- !u!4 &1196306901
 Transform:
   m_ObjectHideFlags: 0
@@ -20487,6 +20523,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1372422913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1372422914}
+  m_Layer: 0
+  m_Name: QuitLerpStart
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1372422914
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372422913}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 81.000015, y: -311.99997, z: 0}
+  m_LocalScale: {x: 2.4710422, y: 2.4710422, z: 2.4710422}
+  m_Children: []
+  m_Father: {fileID: 582646787}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1381607805
 GameObject:
   m_ObjectHideFlags: 0
@@ -20721,7 +20787,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: cold feet...
+  m_Text: JUMP OUT!
 --- !u!222 &1483929217
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21261,7 +21327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1776973501}
   m_Layer: 0
-  m_Name: LerpEnd
+  m_Name: TitleLerpEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21311,9 +21377,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 137185588}
-  - {fileID: 789704033}
   m_Father: {fileID: 582646787}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

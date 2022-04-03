@@ -8,8 +8,11 @@ public class Menu : MonoBehaviour
     public Text SpeedometerText;
     public Slider SpeedometerSlider;
     public GameObject MenuTitle;
-    public GameObject LerpStart;
-    public GameObject LerpEnd;
+    public GameObject QuitButton;
+    public GameObject MenuLerpStart;
+    public GameObject MenuLerpEnd;
+    public GameObject QuitLerpStart;
+    public GameObject QuitLerpEnd;
 
     bool StartButtonClicked;
     float timer;
@@ -21,7 +24,8 @@ public class Menu : MonoBehaviour
         if(StartButtonClicked)
         {
             timer = (timer + Time.deltaTime);
-            MenuTitle.transform.position = Vector3.Lerp(LerpStart.transform.position, LerpEnd.transform.position, timer);
+            MenuTitle.transform.position = Vector3.Lerp(MenuLerpStart.transform.position, MenuLerpEnd.transform.position, timer);
+            QuitButton.transform.position = Vector3.Lerp(QuitLerpStart.transform.position, QuitLerpEnd.transform.position, timer);
             if (timer >= 1)
             {
                 StartButtonClicked = false;
